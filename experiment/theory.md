@@ -35,6 +35,8 @@ The idea for search algorithm can be visualised geometrically : if a node receiv
 
 By calling above function, we recursively find the best estimate of the *preceding* node (in circle), until we can no longer do so. 
 
+## Analysis 
+
 *Inline Exercise 2*: Argue that above routine reduces the search space by at least half.
 
 **Complexity of Search** : It directly follows from Exercise 2 that in O(log n) steps, required node is found. 
