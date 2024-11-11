@@ -11,7 +11,9 @@ A distributed hash table (DHT) is a distributed system that provides a lookup se
 
 Problem at hand is the following: There is a collection of machines/servers on which we want to run some query. More specifically, we want to save files/data on network, and then retrieve them. We may decide to delete/modify some data, or some nodes may leave or a new node may even join. These requirements are fairly reasonable for any practical service.  It is obviously infeasible to store all data on every machine (why?). If we decide to distribute data over these machines, but devise no efficient mechanism to search, it is equally bad (why?). Chord is designed to hit all three requirements as enumerated above. 
 
-A concept central to DHTs is that of an **overlay network**. This network is often called (abused) as “logical network”. What this "network" really is is just a description of a specific way for any node to communicate (with any other node). The description is such that it achieves specific purpose (and we are able to prove performance guarantees mathematically). 
+A concept central to DHTs is that of an **overlay network**. This network is often called (abused) as “logical network”. This "network" is simply a description of a specific way for nodes to communicate. The scheme is such that it achieves a specific purpose (and we are able to prove performance guarantees mathematically). 
+
+## Overview
 
 Recall that a hash-table maps key to values. DHT stores key-value pairs and a participating node can efficiently retrieve the value associated with a given key. In Chord, nodes and keys are assigned say, m bit, identifiers using consistent hashing (SHA-1) for performance guarantees. We therefore have a mechanism to generate ids for both keys and nodes.  Both key and node share same key-space -consistent hashing minimises collisions by distributing both keys and node ids uniformly. 
 
@@ -20,7 +22,7 @@ It will be helpful to refer to geometric interpretation of *chord* while underst
 
 The following is the core of Chord protocol (and justifies the name “chord”). Each node stores a small table called “finger table”. This table contains m entries of the following form : 
 
-	i-th entry is :  successor((n+2i-1)mod 2<sup>m</sup>)
+	i<sup>th</sup> entry is :  successor((n+2<sup>i-1</sup>)mod 2<sup>m</sup>)
 
 
 We again, and for last time, abuse language and say, “node n is logically connected to all nodes in its finger table”. We call such connections as “chords”. Observe that, for a node, chords differ successively by a factor of 2. 
@@ -37,7 +39,7 @@ By calling above function, we recursively find the best estimate of the *precedi
 
 *Inline Exercise 2*: Argue that above routine reduces the search space by at least half.
 
-It directly follows from Exercise 2 that in O(log n) steps, required node is found. 
+**Complexity of Search** : It directly follows from Exercise 2 that in O(log n) steps, required node is found. 
 
 **Corner case** : In practice, exact match between hash of key and hash of node is very rare. 
 
