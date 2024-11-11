@@ -23,7 +23,7 @@ It will be helpful to refer to geometric interpretation of *chord* while underst
 The following is the core of Chord protocol (and justifies the name “chord”). Each node stores a small table called “finger table”. This table contains m entries of the form : i<sup>th</sup> entry of table is :  successor((n+2<sup>i-1</sup>)mod 2<sup>m</sup>)
 
 
-We again, and for the last time, abuse language and say, “node n is logically connected to all nodes in its finger table”. We call such connections as “chords”. Observe that, for a node, chords differ successively by a factor of 2. 
+We again, and for the last time, abuse language and say, “node n is *logically connected* to all nodes in its finger table”. We call such connections as “chords”. Observe that, for a node, chords differ successively by a factor of 2. 
 
 *Inline Exercise 1* : Prove that all the fingers cumulatively cover the entire circle. 
 
