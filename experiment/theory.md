@@ -46,4 +46,4 @@ By calling above function, we recursively find the best estimate of the *precedi
 *Inline Exercise 3* : Modify **Recursive_Preceding _Node()** to handle the corner case. 
 
 
-We remark that *Initialisation* routine is a basic routine which sets a node’s fields (finger table, predecessor) correctly. By storing *predecessor* of every node in its finger table, we can handle node addition/deletion by adding/deleting specific entries in other nodes' fields, and by running *Initialisation* routine for new node. Interested reader can attempt to define these sub-routines, which are fairly straightforward. Details are in [K&S].
+We remark that *Initialisation* routine is a basic routine which sets a node’s fields (finger table, predecessor) correctly. By also storing *predecessor* of every node in the node itself we can handle node addition/deletion by adding/deleting specific entries in other nodes' fields, and by running *Initialisation* routine for new node. Interested reader can attempt to define these sub-routines, which are fairly straightforward. Details are in [K&S].
