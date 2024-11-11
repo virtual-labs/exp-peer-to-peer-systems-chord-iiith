@@ -20,9 +20,7 @@ Recall that a hash-table maps key to values. DHT stores key-value pairs and a pa
 
 It will be helpful to refer to geometric interpretation of *chord* while understanding Chord protocol. We place node ids clockwise in an (imaginary) circle with 2<sup>m</sup> entries (m being large enough) in increasing order. We can now define *successor* and *predecessor* functions for nodes : *successor*(n) of node n is the next node in circle clockwise; *predecessor*(n) is defined analogously. We further extend this idea to keys as well : we say that "successor" node of key is the first node whose id equals to k or follows k in circle. The following is therefore well defined :  we will store key k at node successor(k).
 
-The following is the core of Chord protocol (and justifies the name “chord”). Each node stores a small table called “finger table”. This table contains m entries of the following form : 
-
-	i<sup>th</sup> entry is :  successor((n+2<sup>i-1</sup>)mod 2<sup>m</sup>)
+The following is the core of Chord protocol (and justifies the name “chord”). Each node stores a small table called “finger table”. This table contains m entries of the form : i<sup>th</sup> entry of table is :  successor((n+2<sup>i-1</sup>)mod 2<sup>m</sup>)
 
 
 We again, and for last time, abuse language and say, “node n is logically connected to all nodes in its finger table”. We call such connections as “chords”. Observe that, for a node, chords differ successively by a factor of 2. 
